@@ -15,13 +15,17 @@
         <li>
             <input type="checkbox" data-bind="checked: isDone" />
             <input data-bind="value: title, disable: isDone" />
-            <input data-bind="value: timeSpent" />
+            <input data-bind="value: timeSpent" placeholder="Time spent in minutes"/>
             <a href="#" data-bind="click: $parent.removeTask">Delete</a>
         </li>
     </ul>
     <p>You have <b data-bind="text: incompleteTasks().length">&nbsp;</b> incomplete task(s)
     <span data-bind="visible: incompleteTasks().length == 0"> - it's beer time!</span></p>
-
+@*
+    <h3>
+        Total time spent on To Do's: <span data-bind="text: totalTime()"></span>
+    </h3>
+*@
     <form action="/tasks/saveform" method="post">
         <textarea name="tasks" data-bind="value: ko.toJSON(tasks)"></textarea>
         <button type="submit">Save</button>

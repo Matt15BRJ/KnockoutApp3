@@ -33,6 +33,18 @@ function TaskListViewModel() {
             success: function (result) { alert(result) }
         });
     };
+
+    self.totalTime = ko.computed(function () {
+        var total = 0;
+        if ((self.tasks().timeSpent != 0) || !self.tasks().timeSpent.Empty) {
+            for (var i = 0; i < self.tasks().length; i++) {
+                total += self.tasks()[i].timeSpent;
+            }
+        }
+        else total = 0;
+
+        return total;
+    });
 }
 
 ko.applyBindings(new TaskListViewModel());
